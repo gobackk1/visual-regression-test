@@ -1,0 +1,85 @@
+{
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "phone",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "label": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "label": "pc",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "PAGE HOME",
+      "url": "https://www.gutclinic.jp/",
+      "removeSelectors":[".loopSlider","iframe",".slider-wrap"],
+      "fileNameTemplate": "{scenarioLabel}_{viewportLabel}"
+    },
+    {
+      "label": "UI NAV PC",
+      "url": "https://www.gutclinic.jp/",
+      "removeSelectors":[".loopSlider","iframe",".slider-wrap"],
+      "selectors":["body"],
+      "hoverSelectors":[".nav04",".nav04 .sub-menu"],
+      "delay":4000
+    },
+    {
+      "label": "UI NAV PC WIDE",
+      "url": "https://www.gutclinic.jp/",
+      "removeSelectors":[".loopSlider","iframe",".slider-wrap"],
+      "selectors":["body"],
+      "hoverSelectors":[".nav05",".nav05 .submenu-wrap"],
+      "delay":4000
+    },
+    {
+      "label": "UI SP NAV",
+      "url": "https://www.gutclinic.jp/",
+      "selectors":["#menu-header-nav"],
+      "removeSelectors":[".loopSlider","iframe",".slider-wrap"],
+      "clickSelectors":["#toggle",".nav04>a"],
+      "delay":4000
+    },
+    {
+      "label": "PAGE CONTACT",
+      "url": "https://www.gutclinic.jp/contact",
+      "removeSelectors":[".loopSlider","iframe",".slider-wrap"]
+    },
+    {
+      "label": "PAGE SITEMAP",
+      "url": "https://www.gutclinic.jp/sitemap",
+      "removeSelectors":[".loopSlider","iframe",".slider-wrap"]
+    },
+    {
+      "label": "PAGE ARCHIVE",
+      "url": "https://www.gutclinic.jp/blog",
+      "removeSelectors":[".loopSlider","iframe",".slider-wrap"]
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
